@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NetXray</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🔍 NetXray</h1>
+    <p class="subtitle">Network Log Analyzer Dashboard</p>
+
+    <!-- 🔼 Upload Section -->
+    <div class="card">
+        <div class="upload-box">
+            <label for="logfile" class="upload-btn">
+                📂 Choose Log File
+            </label>
+
+            <input 
+                type="file" 
+                id="logfile" 
+                onchange="showFileName()" 
+                hidden
+            >
+
+            <span id="fileName">No file selected</span>
+
+            <button class="analyze-btn" onclick="uploadLog()">Analyze Logs</button>
+        </div>
+    </div>
+
+    <!-- ⬇ Download Button (Hidden initially) -->
+    <div class="export-section" id="exportSection" style="display: none;">
+        <button onclick="downloadReport()">⬇ Download PDF Report</button>
+    </div>
+
+    <!-- 📊 Attack Summary -->
+    <div class="attack-summary" id="attackSummaryBox" style="display: none;">
+        <h2>  Attack Summary</h2>
+        <ul id="attackSummary"></ul>
+    </div>
+
+    <!-- 📈 Stats -->
+    <div class="grid">
+        <div class="card">
+            <h3>Total Logs</h3>
+            <p id="totalLogs">0</p>
+        </div>
+
+        <div class="card">
+            <h3>Alerts</h3>
+            <p id="alertsCount">0</p>
+        </div>
+
+        <div class="card">
+            <h3>Anomalies</h3>
+            <p id="anomalyCount">0</p>
+        </div>
+    </div>
+
+    <!-- ⚠️ Alerts -->
+    <div class="card">
+        <h2>⚠️ Alerts</h2>
+        <ul id="alertsList"></ul>
+    </div>
+
+    <!-- 🧠 Anomalies -->
+    <div class="card">
+        <h2>🧠 Anomalies</h2>
+        <ul id="anomalyList"></ul>
+    </div>
+
+    <!-- 📜 Timeline -->
+    <div class="card">
+        <h2>📜 Timeline</h2>
+        <pre id="timeline"></pre>
+    </div>
+
+</div>
+<!-- 🔄 Full Screen Loader -->
+<div id="loaderOverlay" class="loader-overlay">
+    <div class="spinner"></div>
+    <p>Analyzing Logs...</p>
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
