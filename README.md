@@ -59,6 +59,12 @@ python generate_attack_logs.py
 
 ---
 
+## 🌐 Live Demo
+
+https://your-vercel-link.vercel.app
+
+---
+
 ## 🧠 How It Works
 
 Logs → Parsing → Feature Extraction → Detection → Visualization  
