@@ -5,21 +5,23 @@ from flask import Flask, render_template, request, jsonify,send_file
 from analyzer import analyze_logs
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
-from log_converter import convert_logs
+from log_converter import convert_logs_in_memory
 
 @app.route('/analyze', methods=['POST'])
 def analyze():
     file = request.files['logfile']
-    file.save("uploaded.log")
 
-    # 🔥 Convert first
-    convert_logs("uploaded.log", "sample.log")
+    # ✅ Read directly (no saving)
+    lines = file.read().decode().splitlines()
 
-    # Then analyze
-    with open("sample.log") as f:
-        logs = f.read().splitlines()
+    # ✅ Convert in memory
+    converted_logs = convert_logs_in_memory(lines)
 
-    return jsonify(analyze_logs(logs))
+    # Analyze
+    result = analyze_logs(converted_logs)
+
+    return jsonify(result)
+
 app = Flask(__name__)
 
 @app.route('/export')
