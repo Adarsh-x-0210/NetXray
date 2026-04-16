@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from analyzer import analyze_logs
 from log_converter import convert_logs_in_memory
 
@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "NetXray running"
+    return render_template('index.html')
 
 @app.route('/analyze', methods=['POST'])
 def analyze():
