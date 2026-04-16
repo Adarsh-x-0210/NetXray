@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, render_template
 from analyzer import analyze_logs
 from log_converter import convert_logs_in_memory
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates', static_folder='static')
 
 @app.route('/')
 def home():
