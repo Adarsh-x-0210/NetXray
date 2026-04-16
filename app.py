@@ -11,14 +11,7 @@ def home():
 @app.route('/analyze', methods=['POST'])
 def analyze():
     try:
-        if 'logfile' not in request.files:
-            return jsonify({"error": "No logfile provided"}), 400
-
         file = request.files['logfile']
-
-        if file.filename == '':
-            return jsonify({"error": "No file selected"}), 400
-
         lines = file.read().decode().splitlines()
 
         converted_logs = convert_logs_in_memory(lines)
