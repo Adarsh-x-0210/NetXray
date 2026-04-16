@@ -4,14 +4,17 @@ from log_converter import convert_logs_in_memory
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 from io import BytesIO
+from flask import Flask
 
 app = Flask(__name__)
 
-# 🏠 Home
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return "NetXray is running"
 
+@app.route('/analyze', methods=['POST'])
+def analyze():
+    return {"status": "working"}
 
 # 🔍 Analyze Logs (ONLY ONE VERSION)
 @app.route('/analyze', methods=['POST'])
