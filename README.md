@@ -24,7 +24,8 @@ NetXray/
 │
 ├── app.py  
 ├── analyzer.py  
-├── generate_attack_logs.py  
+├── generate_attack_logs.py
+└── log_converter.py
 │
 ├── templates/
 │   └── index.html  
@@ -35,7 +36,10 @@ NetXray/
 │
 ├── sample.log  
 ├── requirements.txt  
-└── README.md  
+└── README.md 
+
+
+ 
 
 ---
 
